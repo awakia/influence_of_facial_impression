@@ -1,2 +1,17 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h1= "Results of #{@user.name} (ID: #{@user.id})"
+%p= "started at: #{@user.created_at.strftime("%Y-%m-%d %H:%M:%S")}"
+- if #@user.undone_experiments.present?
+  %p= link_to "Continue experiment (#{450-@user.undone_experiments.count}/450)", @user.undone_experiments.first
+- else
+  %table
+    %tr
+      %th Face
+      %th Share
+      %th Accept
+      %th Response Time
+    - @user.experiments.order("face, share").each do |exp|
+      %tr
+        %td= exp.face
+        %td= exp.share
+        %td= exp.accept.nil? ? "" : exp.accept? ? "Accept" : "Reject"
+        %td= sprintf("%.2f sec", exp.response_time / 1000.0) if exp.response_time

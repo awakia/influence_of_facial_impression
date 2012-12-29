@@ -1,2 +1,12 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+%h1 User List
+
+%table
+  %tr
+    %th Name
+    %th Start Time
+    %th Content
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.created_at.strftime("%Y-%m-%d %H:%M:%S")
+      %td= link_to "link", user

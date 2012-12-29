@@ -1,5 +1,10 @@
-%h1
-%p 名前を入力して下さい
+%h1 Influence of Facial Impression Experiment
+
+%p Please enter your name, and click "Start Experiment"
 = form_for @user do |f|
   = f.text_field :name
-  = f.submit "実験をはじめる"
+  = f.submit "Start Experiment"
+
+%p
+  or
+  = link_to "see existing users", users_path
