@@ -9,7 +9,7 @@ class Experiment < ActiveRecord::Base
     exp_list = []
     FACES.times do |face|
       SHARES.each do |share|
-        exp_list << [face, share]
+        exp_list << [face+1, share]
       end
     end
     2.times do
