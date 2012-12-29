@@ -1,4 +1,6 @@
 InfluenceOfFacialImpression::Application.routes.draw do
+  get "experiments/show"
+
   get "users/index"
 
   get "users/show"
