@@ -2,5 +2,14 @@
 face:
 = @experiment.face
 
-share:
-= @experiment.share
+%ul
+  %li= "He gets #{1000 - @experiment.share}"
+  %li= "You get #{@experiment.share}"
+
+= form_for @experiment do |f|
+  = f.hidden_field :accept, value: true
+  = f.submit "Accept"
+
+= form_for @experiment do |f|
+  = f.hidden_field :accept, value: false
+  = f.submit "Reject"
