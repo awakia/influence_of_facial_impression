@@ -1,4 +1,10 @@
 InfluenceOfFacialImpression::Application.routes.draw do
+  get "users/index"
+
+  get "users/show"
+
+  get "users/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
