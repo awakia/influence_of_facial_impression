@@ -1,11 +1,7 @@
 InfluenceOfFacialImpression::Application.routes.draw do
-  get "experiments/show"
-
-  get "users/index"
-
-  get "users/show"
-
-  get "users/new"
+  resources :users, only: [:index, :show, :new, :create] do
+    resources :experiments, only: [:show]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
