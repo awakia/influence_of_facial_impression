@@ -8,8 +8,17 @@ face:
 
 = form_for @experiment do |f|
   = f.hidden_field :accept, value: true
-  = f.submit "Accept"
+  = f.hidden_field :response_time
+  = f.submit "Accept", class: 'updatetime'
+  = f.submit "Reject", class: 'updatetime'
 
-= form_for @experiment do |f|
-  = f.hidden_field :accept, value: false
-  = f.submit "Reject"
+#debug
+
+:javascript
+  $(function() {
+    var start = Date.now();
+    $('#debug').text(start);
+    $('.updatetime').click(function() {
+      $('#experiment_response_time').val(Date.now()-start);
+    })
+  })
