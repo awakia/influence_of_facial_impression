@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229102844) do
+ActiveRecord::Schema.define(:version => 20121229103621) do
+
+  create_table "experiments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "share"
+    t.integer  "face"
+    t.boolean  "accept"
+    t.integer  "response_time"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "experiments", ["user_id"], :name => "index_experiments_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
