@@ -1,5 +1,5 @@
-face:
-= @experiment.face
+.face
+  = image_tag asset_path("faces/face#{@experiment.face}.jpg")
 
 %ul
   %li= "He gets #{1000 - @experiment.share}"
