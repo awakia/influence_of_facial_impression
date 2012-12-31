@@ -1,20 +1,24 @@
-.face
-  = image_tag asset_path("faces/face#{@experiment.face}.jpg")
+.center
+  .face
+    = image_tag asset_path("faces/face#{@experiment.face}.jpg")
 
-%ul
-  %li= "He gets #{1000 - @experiment.share}"
-  %li= "You get #{@experiment.share}"
+  .share-bar.clearfix{ style: "margin-top: 20px"}
+    .left= "You get #{@experiment.share}"
+    .right= "He gets #{1000 - @experiment.share}"
+  .share-bar.clearfix{ style: "margin-bottom: 40px"}
+    .left{ style: "width: #{@experiment.share/2}px; height: 20px; background-color: #CCC;" }
+    .right{ style: "width: #{(1000 - @experiment.share)/2}px; height: 20px; background-color: #555;" }
 
-= form_for @experiment do |f|
-  = f.hidden_field :accept, value: true
-  = f.hidden_field :response_time
-  = f.submit "Accept", class: 'updatetime'
-  = f.submit "Reject", class: 'updatetime'
+  = form_for @experiment do |f|
+    = f.hidden_field :accept, value: true
+    = f.hidden_field :response_time
+    = f.submit "Accept", class: 'choice'
+    = f.submit "Reject", class: 'choice'
 
 :javascript
   $(function() {
     var start = Date.now();
-    $('.updatetime').click(function() {
+    $('.choice').click(function() {
       $('#experiment_response_time').val(Date.now()-start);
     })
   })
