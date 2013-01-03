@@ -8,3 +8,6 @@
 %p
   or
   = link_to "see existing users", users_path
+
+- (1..25).each do |x|
+  = image_tag asset_path("faces/face#{x}.jpg"), style: " width: 1px; height: 1px"

@@ -15,3 +15,6 @@
       %td= exp.share
       %td= exp.accept.nil? ? "" : exp.accept? ? "Accept" : "Reject"
       %td= sprintf("%.2f sec", exp.response_time / 1000.0) if exp.response_time
+
+- (1..25).each do |x|
+  = image_tag asset_path("faces/face#{x}.jpg"), style: " width: 1px; height: 1px"
