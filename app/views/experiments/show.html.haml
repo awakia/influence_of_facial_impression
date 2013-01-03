@@ -1,6 +1,6 @@
 .center
   .face
-    = image_tag asset_path("faces/face#{@experiment.face}.jpg")
+    = image_tag asset_path("faces/face#{@experiment.face}.jpg"), class: "face_img"
 
   .later{ style: "display: none;" }
     .share-bar.clearfix{ style: "margin-top: 20px"}
@@ -17,13 +17,13 @@
       = f.submit "Reject", class: 'choice'
 
 :javascript
-  $(function() {
+  $('.choice').click(function() {
+    $('#experiment_response_time').val(Date.now()-start);
+  })
+  function showLater() {
+    $('.later').show();
+  }
+  $(".face_img").imagesLoaded(function() {
     var start = Date.now();
-    $('.choice').click(function() {
-      $('#experiment_response_time').val(Date.now()-start);
-    })
-    function showLater() {
-      $('.later').show();
-    }
     setTimeout(showLater, 1000);
   })
