@@ -17,6 +17,7 @@
       = f.submit "Reject", class: 'choice'
 
 :javascript
+  var start = Date.now();
   $('.choice').click(function() {
     $('#experiment_response_time').val(Date.now()-start);
   })
@@ -24,6 +25,6 @@
     $('.later').show();
   }
   $(".face_img").imagesLoaded(function() {
-    var start = Date.now();
+    start = Date.now();
     setTimeout(showLater, 1000);
   })
