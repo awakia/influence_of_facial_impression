@@ -6,8 +6,8 @@ class ExperimentsController < ApplicationController
   def update
     @experiment = Experiment.find(params[:id])
     update_params = params[:experiment]
-    update_params[:accept] = true if params[:commit] == 'Accept'
-    update_params[:accept] = false if params[:commit] == 'Reject'
+    update_params[:accept] = true if params[:commit][0] == 'A'  # Accept
+    update_params[:accept] = false if params[:commit][0] == 'R'  # Reject
     @experiment.update_attributes!(update_params)
     next_exp = Experiment.where(user_id: @experiment.user_id, accept: nil).order(:id).first
     if next_exp
