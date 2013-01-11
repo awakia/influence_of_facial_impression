@@ -16,6 +16,6 @@ class UsersController < ApplicationController
     @user.save
     Experiment.generate_set(@user)
 
-    redirect_to experiment_path(@user.experiments.first), notice: 'User was successfully created.'
+    redirect_to experiment_path(@user.experiments.order(:id).first), notice: 'User was successfully created.'
   end
 end

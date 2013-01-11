@@ -1,7 +1,7 @@
 %h1= "Results of #{@user.name} (ID: #{@user.id})"
 %p= "started at: #{@user.created_at.strftime("%Y-%m-%d %H:%M:%S")}"
 - if #@user.undone_experiments.present?
-  %p= link_to "Continue experiment (#{450-@user.undone_experiments.count}/450)", @user.undone_experiments.first
+  %p= link_to "Continue experiment (#{450-@user.undone_experiments.count}/450)", @user.undone_experiments.order(:id).first
 
 %table
   %tr
