@@ -11,7 +11,6 @@
       .right{ style: "width: #{(1000 - @experiment.share)/2}px; height: 20px; background-color: #555;" }
 
     = form_for @experiment do |f|
-      = f.hidden_field :accept, value: true
       = f.hidden_field :response_time
       = f.submit "Accept (F)", class: 'choice', id: "accept"
       = f.submit "Reject (J)", class: 'choice', id: "reject"
