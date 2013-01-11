@@ -13,18 +13,31 @@
     = form_for @experiment do |f|
       = f.hidden_field :accept, value: true
       = f.hidden_field :response_time
-      = f.submit "Accept", class: 'choice'
-      = f.submit "Reject", class: 'choice'
+      = f.submit "Accept (F)", class: 'choice', id: "accept"
+      = f.submit "Reject (J)", class: 'choice', id: "reject"
 
 :javascript
   var start = Date.now();
+  var shown = false
   $('.choice').click(function() {
     $('#experiment_response_time').val(Date.now()-start);
   })
   function showLater() {
     $('.later').show();
+    shown = true;
   }
   $(".face_img").imagesLoaded(function() {
     start = Date.now();
     setTimeout(showLater, 1000);
   })
+
+  $(window).keydown(function(e){
+    if (!shown) return false;
+    key = String.fromCharCode(e.keyCode);
+    if (key == 'F') {
+      $("#accept").click();
+    } else if (key == 'J') {
+      $("#reject").click();
+    }
+    return false;
+  });
