@@ -1,0 +1,16 @@
+%h1 All Experiment Results
+
+%table
+  %tr
+    %th User
+    %th Face
+    %th Share
+    %th Accept
+    %th Response Time
+  - @experiments.each do |exp|
+    %tr
+      %td= "#{exp.user.name} (ID: #{exp.user.id})"
+      %td= exp.face
+      %td= exp.share
+      %td= exp.accept.nil? ? "" : exp.accept? ? "Accept" : "Reject"
+      %td= sprintf("%.2f sec", exp.response_time / 1000.0) if exp.response_time

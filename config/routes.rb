@@ -1,6 +1,6 @@
 InfluenceOfFacialImpression::Application.routes.draw do
   resources :users, only: [:index, :show, :new, :create]
-  resources :experiments, only: [:show, :update]
+  resources :experiments, only: [:index, :show, :update]
 
   root to: "users#new"
 

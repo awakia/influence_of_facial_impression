@@ -1,4 +1,8 @@
 class ExperimentsController < ApplicationController
+  def index
+    @experiments = Experiment.includes(:user).order("user_id, face, share").all
+  end
+
   def show
     @experiment = Experiment.find(params[:id])
   end

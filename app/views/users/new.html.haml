@@ -6,8 +6,10 @@
   = f.submit "Start Experiment"
 
 %p
-  or
-  = link_to "see existing users", users_path
+  or see
+  = link_to "existing users", users_path
+  = '/'
+  = link_to "all experiments results", experiments_path
 
 - (1..25).each do |x|
   = image_tag asset_path("faces/face#{x}.jpg"), style: " width: 1px; height: 1px"
